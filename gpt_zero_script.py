@@ -10,7 +10,7 @@ from waveshare_epd import epd2in7_V2
 # ---------- CONFIG ----------
 
 HA_URL = "http://homeassistant.local:8123"    # or "http://192.168.1.xx:8123"
-HA_TOKEN = ""
+HA_TOKEN = token
 
 LIGHT_ENTITY = "light.basement_lights"
 WEATHER_ENTITY = "weather.home"
@@ -247,6 +247,7 @@ btn3.when_pressed = on_btn3
 btn4.when_pressed = on_btn4
 
 def main():
+    token = input("what is the token: ")
     try:
         print("Booting!")
         refresh_display()
@@ -264,4 +265,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
