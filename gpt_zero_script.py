@@ -13,7 +13,7 @@ HA_URL = "http://homeassistant.local:8123"    # or "http://192.168.1.xx:8123"
 HA_TOKEN = token
 
 LIGHT_ENTITY = "light.basement_lights"
-WEATHER_ENTITY = "weather.home"
+WEATHER_ENTITY = "weather.forecast_home"
 ADAPTIVE_SWITCH = "switch.adaptive_lighting_basement_adaptive"
 
 # Button GPIOs - change these to match your 2.7" HAT buttons
@@ -265,6 +265,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
