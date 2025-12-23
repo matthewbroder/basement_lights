@@ -10,7 +10,7 @@ from waveshare_epd import epd2in7_V2
 # ---------- CONFIG ----------
 
 HA_URL = "http://homeassistant.local:8123"    # or "http://192.168.1.xx:8123"
-HA_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjY2U3YmMwYmY4Yzk0Mzk3OTU4MzdkZmUxYTA5ZTg0YyIsImlhdCI6MTc2NjQ0ODg5NywiZXhwIjoyMDgxODA4ODk3fQ.dyPJEVblBQOH6pBu0rJ6RbHe4nhgKCVWJyXaiSzCvOo"
+HA_TOKEN = ""
 
 LIGHT_ENTITY = "light.basement_lights"
 WEATHER_ENTITY = "weather.home"
@@ -264,3 +264,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
