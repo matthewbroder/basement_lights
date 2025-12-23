@@ -144,11 +144,9 @@ font_med   = ImageFont.truetype(FONT_PATH, 14)
 font_small = ImageFont.truetype(FONT_PATH, 12)
 
 def draw_panel(light_info, weather_info, adaptive_on):
-    # black layer (what we actually draw on)
-    image_black = Image.new('1', (WIDTH, HEIGHT), 255)  # 255=white
-    draw = ImageDraw.Draw(image_black)
-    # red layer (unused, keep white)
-    image_red = Image.new('1', (WIDTH, HEIGHT), 255)
+    # Monochrome image (1-bit), all white to start
+    image = Image.new('1', (WIDTH, HEIGHT), 255)  # 255=white
+    draw = ImageDraw.Draw(image)
 
     # Time
     now_str = time.strftime("%a %b %d  %H:%M")
@@ -164,7 +162,6 @@ def draw_panel(light_info, weather_info, adaptive_on):
         line += f" {bri_pct}%"
     if kelvin is not None:
         line += f" {kelvin}K"
-
     draw.text((4, 26), line, font=font_med, fill=0)
 
     # Mode
@@ -177,14 +174,14 @@ def draw_panel(light_info, weather_info, adaptive_on):
         w_line = f"{weather_info['temp']}° {weather_info['condition']}"
         draw.text((4, 80), w_line, font=font_med, fill=0)
 
-    # Button legend (compact for 176 px height)
+    # Button legend
     draw.text((4, 102), "BTN1: Natural ON/OFF", font=font_small, fill=0)
     draw.text((4, 118), "BTN2: Brighter",       font=font_small, fill=0)
     draw.text((4, 134), "BTN3: Dimmer",         font=font_small, fill=0)
     draw.text((4, 150), "BTN4: Cycle CT (Nat)", font=font_small, fill=0)
 
-    # Push to display
-    epd.display(epd.getbuffer(image_black), epd.getbuffer(image_red))
+    # IMPORTANT: single-buffer display for epd2in7_V2
+    epd.display(epd.getbuffer(image))
 
 # ---------- Buttons ----------
 
@@ -265,6 +262,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
