@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 from waveshare_epd import epd2in7_V2
 
 # ---------- CONFIG ----------
-
+token = input("what is the token: ")
 HA_URL = "http://homeassistant.local:8123"    # or "http://192.168.1.xx:8123"
 HA_TOKEN = token
 
@@ -247,7 +247,7 @@ btn3.when_pressed = on_btn3
 btn4.when_pressed = on_btn4
 
 def main():
-    token = input("what is the token: ")
+    
     try:
         print("Booting!")
         refresh_display()
@@ -265,5 +265,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
